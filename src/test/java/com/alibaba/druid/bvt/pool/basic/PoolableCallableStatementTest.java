@@ -38,6 +38,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledCallableStatement;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import com.alibaba.druid.pool.DruidPooledPreparedStatement.PreparedStatementKey;
+import com.alibaba.druid.pool.PhoenixDruidPooledConnection;
 import com.alibaba.druid.pool.PreparedStatementHolder;
 
 public class PoolableCallableStatementTest extends TestCase {
@@ -50,7 +51,7 @@ public class PoolableCallableStatementTest extends TestCase {
     protected void setUp() throws Exception {
         MockConnection mockConn = new MockConnection();
         DruidConnectionHolder connHolder = new DruidConnectionHolder(dataSource, mockConn, 0);
-        conn = new DruidPooledConnection(connHolder);
+        conn = new PhoenixDruidPooledConnection(connHolder);
         raw = new MockCallableStatement(null, null);
         stmt = new DruidPooledCallableStatement(conn, new PreparedStatementHolder(new PreparedStatementKey("", null,
                                                                                                            null, 0, 0,

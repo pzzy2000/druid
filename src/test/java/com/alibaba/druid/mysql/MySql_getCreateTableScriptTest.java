@@ -1,10 +1,11 @@
 package com.alibaba.druid.mysql;
 
 import com.alibaba.druid.DbTestCase;
+
 import com.alibaba.druid.util.JdbcConstants;
 import com.alibaba.druid.util.JdbcUtils;
 import com.alibaba.druid.util.MySqlUtils;
-import com.alibaba.druid.util.OracleUtils;
+//import com.alibaba.druid.util.OracleUtils;
 
 import java.sql.Connection;
 import java.util.List;

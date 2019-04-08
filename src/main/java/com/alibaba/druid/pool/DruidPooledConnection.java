@@ -52,7 +52,7 @@ import com.alibaba.druid.support.logging.LogFactory;
 /**
  * @author wenshao [szujobs@hotmail.com]
  */
-public class DruidPooledConnection extends PoolableWrapper implements javax.sql.PooledConnection, Connection {
+public abstract class DruidPooledConnection extends PoolableWrapper implements javax.sql.PooledConnection, Connection {
     private final static Log                   LOG                  = LogFactory.getLog(DruidPooledConnection.class);
     public static final  int                   MAX_RECORD_SQL_COUNT = 10;
     protected            Connection            conn;

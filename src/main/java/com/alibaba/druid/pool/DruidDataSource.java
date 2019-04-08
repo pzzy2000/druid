@@ -1622,7 +1622,7 @@ public class DruidDataSource extends DruidAbstractDataSource implements DruidDat
 
         holder.incrementUseCount();
 
-        DruidPooledConnection poolalbeConnection = new DruidPooledConnection(holder);
+        DruidPooledConnection poolalbeConnection = new PhoenixDruidPooledConnection(holder);
         return poolalbeConnection;
     }
 

@@ -72,7 +72,7 @@ import com.alibaba.druid.support.logging.LogFactory;
 import com.alibaba.druid.util.FnvHash;
 import com.alibaba.druid.util.JdbcConstants;
 import com.alibaba.druid.util.MySqlUtils;
-import com.alibaba.druid.util.OracleUtils;
+//import com.alibaba.druid.util.OracleUtils;
 import com.alibaba.druid.util.PGUtils;
 import com.alibaba.druid.util.StringUtils;
 import com.alibaba.druid.util.Utils;
@@ -887,9 +887,10 @@ public class SQLUtils {
                 }
 
                 if (JdbcConstants.ORACLE.equals(dbType)) {
-                    if (OracleUtils.isKeyword(normalizeName)) {
-                        return name;
-                    }
+//                    if (OracleUtils.isKeyword(normalizeName)) {
+//                        return name;
+//                    }
+                	throw new RuntimeException("not support ! ");
                 } else if (JdbcConstants.MYSQL.equals(dbType)) {
                     if (MySqlUtils.isKeyword(normalizeName)) {
                         return name;

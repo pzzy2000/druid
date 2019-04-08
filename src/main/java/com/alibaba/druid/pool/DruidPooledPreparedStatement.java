@@ -40,7 +40,7 @@ import java.util.Calendar;
 import com.alibaba.druid.pool.PreparedStatementPool.MethodType;
 import com.alibaba.druid.support.logging.Log;
 import com.alibaba.druid.support.logging.LogFactory;
-import com.alibaba.druid.util.OracleUtils;
+//import com.alibaba.druid.util.OracleUtils;
 
 /**
  * @author wenshao [szujobs@hotmail.com]
@@ -520,11 +520,12 @@ public class DruidPooledPreparedStatement extends DruidPooledStatement implement
         }
 
         if (holder.getDefaultRowPrefetch() == -1) {
-            int defaultRowPretch = OracleUtils.getRowPrefetch(this);
-            if (defaultRowPretch != holder.getDefaultRowPrefetch()) {
-                holder.setDefaultRowPrefetch(defaultRowPretch);
-                holder.setRowPrefetch(defaultRowPretch);
-            }
+        	throw new RuntimeException("not support ! ");
+//            int defaultRowPretch = OracleUtils.getRowPrefetch(this);
+//            if (defaultRowPretch != holder.getDefaultRowPrefetch()) {
+//                holder.setDefaultRowPrefetch(defaultRowPretch);
+//                holder.setRowPrefetch(defaultRowPretch);
+//            }
         }
 
         int rowPrefetch;
@@ -538,8 +539,9 @@ public class DruidPooledPreparedStatement extends DruidPooledStatement implement
         }
 
         if (rowPrefetch != holder.getRowPrefetch()) {
-            OracleUtils.setRowPrefetch(this, rowPrefetch);
-            holder.setRowPrefetch(rowPrefetch);
+//            OracleUtils.setRowPrefetch(this, rowPrefetch);
+//            holder.setRowPrefetch(rowPrefetch);
+        	throw new RuntimeException("not support ! ");
         }
     }
 

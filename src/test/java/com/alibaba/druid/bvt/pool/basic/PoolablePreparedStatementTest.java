@@ -35,6 +35,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;
 import com.alibaba.druid.pool.DruidPooledPreparedStatement;
 import com.alibaba.druid.pool.DruidPooledPreparedStatement.PreparedStatementKey;
+import com.alibaba.druid.pool.PhoenixDruidPooledConnection;
 import com.alibaba.druid.pool.PreparedStatementHolder;
 
 public class PoolablePreparedStatementTest extends TestCase {
@@ -46,7 +47,7 @@ public class PoolablePreparedStatementTest extends TestCase {
         DruidDataSource                dataSource = new DruidDataSource();
         MockConnection mockConn = new MockConnection();
         DruidConnectionHolder connHolder = new DruidConnectionHolder(dataSource, mockConn, 0);
-        DruidPooledConnection conn = new DruidPooledConnection(connHolder);
+        DruidPooledConnection conn = new PhoenixDruidPooledConnection(connHolder);
 
         raw = new MockPreparedStatement(null, null);
         stmt = new DruidPooledPreparedStatement(conn, new PreparedStatementHolder(new PreparedStatementKey("", null,

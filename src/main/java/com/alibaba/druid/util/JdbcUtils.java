@@ -42,6 +42,8 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.openjdk.jmh.runner.RunnerException;
+
 import com.alibaba.druid.support.logging.Log;
 import com.alibaba.druid.support.logging.LogFactory;
 
@@ -826,7 +828,8 @@ public final class JdbcUtils implements JdbcConstants {
         }
 
         if (JdbcConstants.ORACLE.equals(dbType)) {
-            return OracleUtils.showTables(conn);
+        	throw new RuntimeException("not support ! ");
+//            return OracleUtils.showTables(conn);
         }
 
         if (JdbcConstants.POSTGRESQL.equals(dbType)) {
@@ -845,7 +848,8 @@ public final class JdbcUtils implements JdbcConstants {
         }
 
         if (JdbcConstants.ORACLE.equals(dbType)) {
-            return OracleUtils.getCreateTableScript(conn, sorted, simplify);
+        	   throw new RuntimeException("not support ! ");
+//            return OracleUtils.getCreateTableScript(conn, sorted, simplify);
         }
 
         throw new SQLException("getCreateTableScript dbType not support for " + dbType);

@@ -27,7 +27,7 @@ import com.alibaba.druid.proxy.jdbc.CallableStatementProxy;
 import com.alibaba.druid.proxy.jdbc.PreparedStatementProxy;
 import com.alibaba.druid.support.logging.Log;
 import com.alibaba.druid.support.logging.LogFactory;
-import com.alibaba.druid.util.OracleUtils;
+//import com.alibaba.druid.util.OracleUtils;
 
 /**
  * @author wenshao [szujobs@hotmail.com]
@@ -63,7 +63,8 @@ public class PreparedStatementPool {
             holder.incrementHitCount();
             dataSource.incrementCachedPreparedStatementHitCount();
             if (holder.isEnterOracleImplicitCache()) {
-                OracleUtils.exitImplicitCacheToActive(holder.statement);
+//                OracleUtils.exitImplicitCacheToActive(holder.statement);
+            	throw new RuntimeException("not support ! ");
             }
         } else {
             dataSource.incrementCachedPreparedStatementMissCount();
@@ -88,8 +89,9 @@ public class PreparedStatementPool {
         }
 
         if (dataSource.isOracle() && dataSource.isUseOracleImplicitCache()) {
-            OracleUtils.enterImplicitCache(stmt);
-            stmtHolder.setEnterOracleImplicitCache(true);
+//            OracleUtils.enterImplicitCache(stmt);
+//            stmtHolder.setEnterOracleImplicitCache(true);
+        	throw new RuntimeException("not support ! ");
         } else {
             stmtHolder.setEnterOracleImplicitCache(false);
         }
@@ -166,11 +168,12 @@ public class PreparedStatementPool {
         }
 
         if (holder.isEnterOracleImplicitCache()) {
-            try {
-                OracleUtils.exitImplicitCacheToClose(holder.statement);
-            } catch (Exception ex) {
-                LOG.error("exitImplicitCacheToClose error", ex);
-            }
+//            try {
+//                OracleUtils.exitImplicitCacheToClose(holder.statement);
+//            } catch (Exception ex) {
+//                LOG.error("exitImplicitCacheToClose error", ex);
+//            }
+        	throw new RuntimeException("not support ! ");
         }
         dataSource.closePreapredStatement(holder);
     }

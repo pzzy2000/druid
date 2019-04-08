@@ -16,6 +16,7 @@
 package com.alibaba.druid.pool.xa;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 
 import javax.sql.XAConnection;
@@ -29,7 +30,7 @@ import com.alibaba.druid.support.logging.LogFactory;
 import com.alibaba.druid.util.H2Utils;
 import com.alibaba.druid.util.JdbcUtils;
 import com.alibaba.druid.util.MySqlUtils;
-import com.alibaba.druid.util.OracleUtils;
+//import com.alibaba.druid.util.OracleUtils;
 import com.alibaba.druid.util.PGUtils;
 
 public class DruidXADataSource extends DruidDataSource implements XADataSource {
@@ -61,12 +62,14 @@ public class DruidXADataSource extends DruidDataSource implements XADataSource {
 
     private XAConnection createPhysicalXAConnection(Connection physicalConn) throws SQLException {
         if (JdbcUtils.ORACLE.equals(dbType)) {
-            try {
-                return OracleUtils.OracleXAConnection(physicalConn);
-            } catch (XAException xae) {
-                LOG.error("create xaConnection error", xae);
-                return null;
-            }
+//            try {
+//            	throw new RuntimeException("not support ! ");
+////                return OracleUtils.OracleXAConnection(physicalConn);
+//            } catch (XAException xae) {
+//                LOG.error("create xaConnection error", xae);
+//                return null;
+//            }
+        	throw new RuntimeException("not support ! ");
         }
 
         if (JdbcUtils.MYSQL.equals(dbType) || JdbcUtils.MARIADB.equals(dbType)) {

@@ -1,28 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.alibaba</groupId>
-	<artifactId>druid</artifactId>
+	<artifactId>phoenix_druid</artifactId>
 	<version>1.1.16</version>
-
 	<packaging>jar</packaging>
-	<name>druid</name>
+	<name>phoenix_druid</name>
 	<description>An JDBC datasource implementation.</description>
 	<url>https://github.com/alibaba/druid</url>
 	<inceptionYear>2013</inceptionYear>
-
 	<properties>
 		<spring.version>4.3.20.RELEASE</spring.version>
 		<junit.version>4.12</junit.version>
 		<jmh.version>1.19</jmh.version>
-
 		<gpg.skip>false</gpg.skip>
 		<javadoc.skip>false</javadoc.skip>
-
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.6</jdk.version>
 	</properties>
-
 	<repositories>
 		<repository>
 			<id>local-file</id>
@@ -30,7 +26,6 @@
 			<layout>default</layout>
 		</repository>
 	</repositories>
-
 	<developers>
 		<developer>
 			<id>wenshao</id>
@@ -48,17 +43,14 @@
 			<email>yakolyh@gmail.com</email>
 		</developer>
 	</developers>
-
 	<scm>
 		<url>https://wenshao@github.com/alibaba/druid.git</url>
 		<connection>scm:git:https://wenshao@github.com/alibaba/druid.git</connection>
 	</scm>
-
 	<organization>
 		<name>Alibaba Group</name>
 		<url>http://code.alibabatech.com/</url>
 	</organization>
-
 	<licenses>
 		<license>
 			<name>Apache 2</name>
@@ -67,7 +59,6 @@
 			<comments>A business-friendly OSS license</comments>
 		</license>
 	</licenses>
-
 	<issueManagement>
 		<system>Jira</system>
 		<url>http://code.alibabatech.com/jira/browse/DRUID</url>
@@ -86,113 +77,28 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
+					<skip>true</skip>
 					<encoding>UTF-8</encoding>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.1</version>
 				<configuration>
+				    <skip>true</skip>
 					<includes>
 						<include>**/bvt/**/*.java</include>
 					</includes>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<attach>true</attach>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.0.1</version>
-				<executions>
-					<execution>
-						<id>attach-javadoc</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<skip>${javadoc.skip}</skip>
-					<show>public</show>
-					<charset>UTF-8</charset>
-					<encoding>UTF-8</encoding>
-					<docencoding>UTF-8</docencoding>
-					<links>
-						<link>http://docs.oracle.com/javase/6/docs/api</link>
-					</links>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.6</version>
-				<configuration>
-					<skip>${gpg.skip}</skip>
-				</configuration>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
+			
+			
+			
 			<!-- http://code.google.com/p/maven-license-plugin/wiki/HowTo -->
-			<plugin>
-				<!-- Working with multi-module projects -->
-				<inherited>false</inherited>
-				<groupId>com.mycila.maven-license-plugin</groupId>
-				<artifactId>maven-license-plugin</artifactId>
-				<version>1.10.b1</version>
-				<configuration>
-					<header>${basedir}/doc/license.txt</header>
-					<failIfMissing>true</failIfMissing>
-					<aggregate>true</aggregate>
-					<strictCheck>true</strictCheck>
-					<properties>
-						<!-- <year>2012</year> -->
-					</properties>
-					<mapping>
-						<java>SLASHSTAR_STYLE</java>
-					</mapping>
-					<includes>
-						<include>src/main/java/**/*.java</include>
-					</includes>
-					<encoding>UTF-8</encoding>
-				</configuration>
-				<executions>
-					<execution>
-						<id>check-headers</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -231,7 +137,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<profiles>
 		<profile>
 			<id>default-profile</id>
@@ -245,7 +150,6 @@
 				<toolsjar>${env.JAVA_HOME}/lib/tools.jar</toolsjar>
 				<jconsolejar>${env.JAVA_HOME}/lib/jconsole.jar</jconsolejar>
 			</properties>
-
 			<dependencies>
 				<dependency>
 					<groupId>com.alibaba</groupId>
@@ -284,7 +188,6 @@
 				</dependency>
 			</dependencies>
 		</profile>
-
 		<profile>
 			<id>mac-profile-oracle-jdk</id>
 			<activation>
@@ -302,7 +205,6 @@
 					<systemPath>${java.home}/../lib/jconsole.jar</systemPath>
 					<optional>true</optional>
 				</dependency>
-
 				<dependency>
 					<groupId>com.alibaba</groupId>
 					<artifactId>tools</artifactId>
@@ -349,7 +251,6 @@
 			</build>
 		</profile>
 	</profiles>
-
 	<dependencies>
 		<dependency>
 			<groupId>simple-jndi</groupId>
@@ -364,7 +265,6 @@
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
-
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -379,7 +279,6 @@
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -408,7 +307,6 @@
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-ibatis</artifactId>
@@ -478,21 +376,18 @@
 			<version>42.1.4</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0.3</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.kylin</groupId>
 			<artifactId>kylin-jdbc</artifactId>
 			<version>2.0.0</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
@@ -500,22 +395,18 @@
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.apache.ibatis</groupId>
 			<artifactId>ibatis-sqlmap</artifactId>
 			<version>2.3.4.726</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.191</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -559,12 +450,9 @@
 			<version>2.5.3</version>
 			<scope>provided</scope>
 		</dependency>
-
-
 		<!--
 			test dependences
 		-->
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
@@ -577,7 +465,6 @@
 			<version>1.6</version>
 			<scope>test</scope>
 		</dependency>
-
 		<!-- <dependency> <groupId>com.microsoft.sqlserver</groupId> <artifactId>sqljdbc4</artifactId> <version>4.0.2206.100</version>
 			<scope>test</scope> </dependency> -->
 		<dependency>
@@ -592,7 +479,6 @@
 			<version>10.12.1.1</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -629,28 +515,24 @@
 			<version>0.9.1</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.2</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-jdbc</artifactId>
 			<version>8.0.32</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.nutz</groupId>
 			<artifactId>nutz</artifactId>
 			<version>1.r.55</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.taobao.tbdatasource</groupId>
 			<artifactId>tbdatasource</artifactId>
@@ -663,7 +545,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
 		<dependency>
 			<groupId>org.javasimon</groupId>
 			<artifactId>javasimon-spring</artifactId>
@@ -682,8 +563,6 @@
 			<version>4.1.1</version>
 			<scope>test</scope>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.apache.calcite</groupId>
 			<artifactId>calcite-druid</artifactId>
@@ -696,14 +575,12 @@
 			<version>1.13.0</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>commons-dbutils</groupId>
 			<artifactId>commons-dbutils</artifactId>
 			<version>1.6</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
@@ -716,7 +593,6 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.openjdk.jmh</groupId>
 			<artifactId>jmh-core</artifactId>
@@ -735,6 +611,5 @@
 			<version>2.4.0</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 </project>

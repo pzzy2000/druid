@@ -16,12 +16,10 @@
 package com.alibaba.druid.pool.xa;
 
 import java.sql.Connection;
-
 import java.sql.SQLException;
 
 import javax.sql.XAConnection;
 import javax.sql.XADataSource;
-import javax.transaction.xa.XAException;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;

@@ -42,8 +42,6 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.openjdk.jmh.runner.RunnerException;
-
 import com.alibaba.druid.support.logging.Log;
 import com.alibaba.druid.support.logging.LogFactory;
 
